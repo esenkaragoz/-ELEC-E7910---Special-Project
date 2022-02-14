@@ -1,6 +1,4 @@
-%This code checks how many active users in the vector element which holds
-%the number of active users in each slot. And update the vector after
-%decoding the users
+%This code checks how many active users in the vector element and update the vector after decoding the users
 
 numOfSlots      = 26;
 numOfMaxActUser = 3; % number of maximum active user in a slot according to the Steiner system
