@@ -9,11 +9,10 @@ for i=1:1:numOfSlots
     vector(i,1) = randi([0 5],1); %randomly generated number of active users in the slots.
 end
 
-%decoder to check how many active users in the slot and update the vector
-%after decode the users
+%decoder to check how many active users in the slot and update the vector after decoding the users
 for k=1:1:numOfSlots
     if vector(k,1) > numOfMaxActUser
-        fprintf("There is an interference in the %d . slot and number of shceduled user is %d\n", k, vector(k,1));
+        fprintf("There is an interference in the %d . slot and number of scheduled user is %d\n", k, vector(k,1));
     else
         vector(k,1) = 0;
     end
