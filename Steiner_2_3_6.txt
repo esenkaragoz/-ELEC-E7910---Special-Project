@@ -1,0 +1,10 @@
+C(6,3,2) = 6
+Method of Construction: cyclic covering found by a search program
+Lower Bound: Schonheim
+
+2  3  5
+3  4  6
+1  4  5
+2  5  6
+1  3  6
+1  2  4
