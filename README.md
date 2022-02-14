@@ -1,4 +1,4 @@
-# -ELEC-E7910---Special-Project
+# ELEC-E7910
 The topic is related to ultra-reliable low latency communication based on grant free communication, i.e. random access. Some background can be found in the attached papers. 
 
 The idea is to consider interference canceling codes with M-IC, as discussed in the Boyd-papers. Specifically, the idea is that there is a population of users. There is a kind of “access frame” of n access slots.  Each user has an access sequence, meaning that the user transmits the same data repeated in multiple access slots in the “access frame”. The access slots where the users transmit their messages, are arranged in such a way that always if there is at most M users, one may perform Serial Interference Cancelation (SIC) such that each of the accessing users has a interference free slot at some stage of the decoding. 
