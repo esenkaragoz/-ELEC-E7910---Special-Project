@@ -1,6 +1,6 @@
 tic
 loop_cnt = 1000;
-while(loop_cnt ~= 0)
+parfor iteration = 1:1:1000
     error_detection();
     loop_cnt = loop_cnt-1;
 end
