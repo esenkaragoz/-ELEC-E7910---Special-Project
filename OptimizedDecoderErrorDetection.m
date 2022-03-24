@@ -1,8 +1,7 @@
 tic
-loop_cnt = 1000;
-parfor iteration = 1:1:1000
+loop_cnt = 10000
+parfor iteration = 1:1:loop_cnt
     error_detection();
-    loop_cnt = loop_cnt-1;
 end
 toc
 

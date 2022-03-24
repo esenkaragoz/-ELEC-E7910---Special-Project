@@ -16,7 +16,8 @@ userRntiwithScheduledSlotNumbers(1:m,2:n+1) = Steiner(1:m,1:n);
 %The range for lambda will be decided later. it is 3 for now.
 lambda = 3;
 tic
-parfor iteration = 1:1:10000
+loop_cnt = 10000
+parfor iteration = 1:1:loop_cnt
 numOfActiveUsers = poissrnd(lambda);
 
 %assign random RNTI numbers for active users between 1-260.
