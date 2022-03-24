@@ -1,8 +1,3 @@
-C(26,5,3) = 260
-Created by: Jan de Heer and Steve Muir
-Method of Construction: Cyclic Symmetry
-Lower Bound: Schonheim
-
   1  2  3  6 24
   1  2  4 10 14
   1  2  5 23 26
