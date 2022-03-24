@@ -14,9 +14,11 @@ userRntiwithScheduledSlotNumbers(1:m,2:n+1) = Steiner(1:m,1:n);
 
 %poisson distribution will be used to determine number of active users in the slots.
 %The range for lambda will be decided later. it is 3 for now.
-lambda = 3;
 tic
-loop_cnt = 10000
+loop_cnt = 10^9;
+results = [];
+for lambda = 0.025:0.025:0.25
+e=0;
 parfor iteration = 1:1:loop_cnt
 numOfActiveUsers = poissrnd(lambda);
 
@@ -82,8 +84,11 @@ for z=1:1:numOfSlots
     end
 end
 
-%if errorSum > 0
-%    fprintf("Test failed");
-%end
+if errorSum > 0
+    e = e + 1;
 end
+end
+results=[results,e];
+end
+disp(results)
 toc
