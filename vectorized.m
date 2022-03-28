@@ -1,7 +1,13 @@
 Steiner = importdata('Steiner_3_5_26.txt');
-numOfSlots = 26;                                                                                                 
-lambda = 8;
+numOfSlots = 26;    
+
+tic
+loop_cnt = 10^9;
+results = [];
+for lambda = 0.025:0.025:0.25
 errorCounter = 0;
+parfor iteration = 1:loop_cnt
+
 numOfActiveUsers = poissrnd(lambda);
 slotVector = zeros(numOfSlots,numOfActiveUsers);
 S = Steiner(randsample(260, numOfActiveUsers),:);
@@ -25,4 +31,9 @@ end
 if any(slotVector)
     errorCounter = errorCounter + 1;
 end
-errorCounter
+
+end
+end
+results=[results,errorCounter];
+disp(results)
+toc
