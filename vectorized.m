@@ -1,14 +1,14 @@
 Steiner = importdata('Steiner_3_5_26.txt');
 numOfSlots = 26;    
 
-tic
-loop_cnt = 10^9;
-results = [];
-for lambda = 0.025:0.025:0.25
-errorCounter = 0;
-parfor iteration = 1:loop_cnt
 
-numOfActiveUsers = poissrnd(lambda);
+loop_cnt = 10^3;
+max_users = 80;
+results = zeros(1,max_users);
+tic
+parfor numOfActiveUsers = 1:1:max_users %0.025:0.025:0.25
+errorCounter = 0;
+for iteration = 1:loop_cnt
 slotVector = zeros(numOfSlots,numOfActiveUsers);
 S = Steiner(randsample(260, numOfActiveUsers),:);
 for i=1:1:numOfActiveUsers
@@ -27,13 +27,17 @@ while 1
     end
     slotVector(:,cols(:)) = zeros(26,a(1));
 end
-
 if any(slotVector)
     errorCounter = errorCounter + 1;
 end
-
 end
+results(numOfActiveUsers)=errorCounter;
 end
-results=[results,errorCounter];
-disp(results)
 toc
+
+pythonstring = strcat('[', num2str(results(1)));
+for i=2:1:length(results)
+    pythonstring = strcat(pythonstring, ', ', num2str(results(i)));
+end
+pythonstring = strcat(pythonstring, ']');
+disp(pythonstring);
