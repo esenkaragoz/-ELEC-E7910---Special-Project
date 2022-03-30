@@ -24,11 +24,11 @@ Steiner = importdata('Steiner_3_5_26.txt');
 numOfSlots = 26;    
 
 
-loop_cnt = 1e6;
-max_users = 25;
+loop_cnt = 1e7;
+max_simulated_users = 25;
 results = zeros(1,max_users);
 tic
-parfor numOfActiveUsers = 1:1:max_users
+parfor numOfActiveUsers = 1:1:max_simulated_users
 errorCounter = 0;
 for iteration = 1:loop_cnt
 slotVector = zeros(numOfSlots,numOfActiveUsers);
