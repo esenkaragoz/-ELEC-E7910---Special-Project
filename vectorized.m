@@ -24,7 +24,7 @@ Steiner = importdata('Steiner_3_5_26.txt');
 numOfSlots = 26;    
 
 
-loop_cnt = 1e7;
+loop_cnt = 1e8;
 max_simulated_users = 25;
 results = zeros(1,max_users);
 tic
