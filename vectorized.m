@@ -24,8 +24,8 @@ Steiner = importdata('Steiner_3_5_26.txt');
 numOfSlots = 26;    
 
 
-loop_cnt = 10^8;
-max_users = 80;
+loop_cnt = 1e6;
+max_users = 25;
 results = zeros(1,max_users);
 tic
 parfor numOfActiveUsers = 1:1:max_users
@@ -44,13 +44,16 @@ while 1
     [rows, cols] = find(quot);
     cols = unique(cols);
     a = size(cols);
-    if a(1) == 0
+    slotVector(:,cols(:)) = zeros(26,a(1));
+    if ~any(slotVector, 'all')
+	% Decoding is a success, break the while loop and go to next case
         break
     end
-    slotVector(:,cols(:)) = zeros(26,a(1));
-end
-if any(slotVector)
-    errorCounter = errorCounter + 1;
+    if any(slotVector, 'all')&&(a(1) == 0)
+	% Decoding did not succeed, increase error counter and go to next case
+	errorCounter = errorCounter + 1;
+	break
+    end
 end
 end
 results(numOfActiveUsers)=errorCounter;
