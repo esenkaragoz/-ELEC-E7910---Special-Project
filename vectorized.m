@@ -1,19 +1,19 @@
 % Initialize the parallel pool
-c=parcluster();
+%c=parcluster();
 
 % Create a temporary folder for the workers working on this job,
 % in order not to conflict with other jobs.
-t=tempname();
-mkdir(t);
+%t=tempname();
+%mkdir(t);
 
 % set the worker storage location of the cluster
-c.JobStorageLocation=t;
+%c.JobStorageLocation=t;
 
 % get the number of workers based on the available CPUS from SLURM
-num_workers = str2double(getenv('SLURM_CPUS_PER_TASK'));
+%num_workers = str2double(getenv('SLURM_CPUS_PER_TASK'));
 
 % start the parallel pool
-parpool(c,num_workers);
+%parpool(c,num_workers);
 
 
 
@@ -24,9 +24,9 @@ Steiner = importdata('Steiner_3_5_26.txt');
 numOfSlots = 26;    
 
 
-loop_cnt = 1e8;
+loop_cnt = 1e4;
 max_simulated_users = 25;
-results = zeros(1,max_users);
+results = zeros(1,max_simulated_users);
 tic
 parfor numOfActiveUsers = 1:1:max_simulated_users
 errorCounter = 0;
@@ -70,4 +70,4 @@ disp(pythonstring);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Exit the program
-exit(0)
+% exit(0)
