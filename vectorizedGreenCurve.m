@@ -9,7 +9,7 @@ parfor numOfActiveUsers = 1:1:max_simulated_users
 errorCounter = 0;
 for iteration = 1:loop_cnt
 slotVector = zeros(numOfSlots,numOfActiveUsers);
-S = TwoICCode(randsample(260, numOfActiveUsers),:);
+S = TwoICCode(randsample(65780, numOfActiveUsers),:);
 for i=1:1:numOfActiveUsers
     slotVector(S(i,:),i) = ones(5,1);
 end
