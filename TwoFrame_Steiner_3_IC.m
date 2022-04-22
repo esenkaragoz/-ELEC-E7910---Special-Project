@@ -1,7 +1,7 @@
 Steiner = importdata('Steiner_3_5_26.txt');
 numOfFrame = 2;
 numOfSlots = 26*numOfFrame;
-loop_cnt = 1e4;
+loop_cnt = 1e6;
 max_simulated_users = 43;
 results = zeros(1,max_simulated_users);
 tic
