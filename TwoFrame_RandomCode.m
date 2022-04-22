@@ -1,19 +1,21 @@
 randomcodeWord = nchoosek(1:1:26,5);
-numOfFrame = 3;
-numOfSlots = 26*numOfFrame;    
+numOfFrame = 2;
+numOfSlots = 26*numOfFrame;
 loop_cnt = 1e6;
-max_simulated_users = 60;
+max_simulated_users = 43;
 results = zeros(1,max_simulated_users);
 tic
 parfor numOfActiveUsers = 1:1:max_simulated_users
 errorCounter = 0;
 for iteration = 1:loop_cnt
 slotVector = zeros(numOfSlots,numOfActiveUsers);
-randomCodeCopy = randomcodeWord(randi(65780, 1, numOfActiveUsers),:);															 
+randomCode = randomcodeWord(randi(65780, 1, numOfActiveUsers),:);
 timeOffset = randi([0,26*(numOfFrame -1)],numOfActiveUsers,1);
-randomCode = randomCodeCopy + timeOffset;
+indexing = lt(randomCode, timeOffset);
+finalCodeBlocks = randomCode;
+finalCodeBlocks(indexing) = randomCode(indexing)+26;
 for i=1:1:numOfActiveUsers
-    slotVector(randomCode(i,:),i) = ones(5,1);
+    slotVector(finalCodeBlocks(i,:),i) = ones(5,1);
 end
 while 1
     rowsums = sum(slotVector,2);
@@ -45,4 +47,3 @@ for i=2:1:length(results)
 end
 pythonstring = strcat(pythonstring, ']');
 disp(pythonstring);
-
