@@ -1,8 +1,8 @@
 Steiner = importdata('Steiner_3_5_26.txt');
-numOfFrame = 3;
+numOfFrame = 2;
 numOfSlots = 26*numOfFrame;
-loop_cnt = 1e6;
-max_simulated_users = 60;
+loop_cnt = 1e4;
+max_simulated_users = 43;
 results = zeros(1,max_simulated_users);
 tic
 parfor numOfActiveUsers = 1:1:max_simulated_users
@@ -11,9 +11,11 @@ for iteration = 1:loop_cnt
 slotVector = zeros(numOfSlots,numOfActiveUsers);
 Scopy = Steiner(randsample(260, numOfActiveUsers),:);
 timeOffset = randi([0,26*(numOfFrame -1)],numOfActiveUsers,1);
-S = Scopy + timeOffset;
+indexing = lt(Scopy, timeOffset);
+ScopyNew = Scopy;
+ScopyNew(indexing) = Scopy(indexing)+26;
 for i=1:1:numOfActiveUsers
-    slotVector(S(i,:),i) = ones(5,1);
+    slotVector(ScopyNew(i,:),i) = ones(5,1);
 end
 while 1
     rowsums = sum(slotVector,2);
