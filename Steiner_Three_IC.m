@@ -15,16 +15,11 @@
 % start the parallel pool
 %parpool(c,num_workers);
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 Steiner = importdata('Steiner_3_5_26.txt');
 numOfSlots = 26;    
 
-
-loop_cnt = 1e4;
+loop_cnt = 1e6;
 max_simulated_users = 25;
 results = zeros(1,max_simulated_users);
 tic
