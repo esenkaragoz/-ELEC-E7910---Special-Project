@@ -1,3 +1,4 @@
+randomcodeWord = nchoosek(1:1:26,5);									
 numOfSlots = 26;    
 loop_cnt = 1e6;
 max_simulated_users = 25;
@@ -7,7 +8,7 @@ parfor numOfActiveUsers = 1:1:max_simulated_users
 errorCounter = 0;
 for iteration = 1:loop_cnt
 slotVector = zeros(numOfSlots,numOfActiveUsers);
-randomCode = randi(26, numOfActiveUsers,5);
+randomCode = randomcodeWord(randi(65780, 1, numOfActiveUsers),:);															 
 for i=1:1:numOfActiveUsers
     slotVector(randomCode(i,:),i) = ones(5,1);
 end
